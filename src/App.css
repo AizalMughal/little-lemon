@@ -1,38 +1,152 @@
-.App {
+/* Color Palette: #495E57 (Deep Green), #F4CE14 (Yellow) */
+body {
+  margin: 0;
+  font-family: 'Markazi Text', 'Karla', sans-serif;
+  color: #333;
+  background-color: #ffffff;
+}
+
+/* Header & Nav */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10%;
+  background-color: #ffffff;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #495E57;
+  font-weight: bold;
+}
+
+/* Hero Section */
+.hero-section {
+  background-color: #495E57;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 10%;
+}
+
+.hero-content h1 {
+  color: #F4CE14;
+  font-size: 3rem;
+  margin: 0;
+}
+
+.hero-content h2 {
+  margin-top: -10px;
+  font-weight: normal;
+}
+
+.btn-primary {
+  background-color: #F4CE14;
+  color: #333;
+  border: none;
+  padding: 12px 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.img-placeholder {
+  background-color: #cccccc;
+  width: 250px;
+  height: 250px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+}
+
+/* Highlights Section */
+.highlights-section {
+  padding: 40px 10%;
+}
+
+.highlights-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #edefee;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-img {
+  background-color: #bbb;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  color: #ee9972;
+  font-weight: bold;
+}
+
+/* Testimonials */
+.testimonials-section {
+  background-color: #edefee;
+  padding: 40px 10%;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.review-card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* About Section */
+.about-section {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  padding: 40px 10%;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  padding: 20px 10%;
+  text-align: center;
 }
