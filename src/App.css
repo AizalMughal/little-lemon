@@ -226,3 +226,62 @@ body {
 .nav-links a:hover {
   color: #495E57;            /* Hover karne par green color */
 }
+
+/* ==========================================
+   Responsive Media Queries for Mobile Devices
+   ========================================== */
+
+@media screen and (max-width: 768px) {
+  /* Hero Section Mobile Adjustment */
+  .hero-section {
+    padding: 20px;
+    margin-bottom: 50px;
+  }
+
+  .hero-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    padding-bottom: 20px;
+  }
+
+  .hero-image-wrapper {
+    width: 100%;
+    max-width: 280px;
+    height: 250px;
+    margin-bottom: -40px;
+  }
+
+  /* Highlights / Specials Section Mobile */
+  .highlights-section {
+    padding: 0 15px;
+  }
+
+  .highlights-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .cards-grid {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Navigation Bar Mobile */
+  .nav-bar {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+}
