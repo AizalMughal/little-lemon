@@ -20,13 +20,18 @@ function BookingForm({ availableTimes, dispatch }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'grid', maxWidth: '400px', gap: '20px', margin: '30px auto' }}>
+    <form 
+      onSubmit={handleSubmit} 
+      className="booking-form"
+      style={{ display: 'grid', maxWidth: '400px', gap: '20px', margin: '30px auto' }}
+    >
       <h2>Reserve a Table</h2>
 
       <label htmlFor="res-date">Choose date</label>
       <input
         type="date"
         id="res-date"
+        aria-label="Choose date"
         value={date}
         onChange={handleDateChange}
         required
@@ -35,6 +40,7 @@ function BookingForm({ availableTimes, dispatch }) {
       <label htmlFor="res-time">Choose time</label>
       <select
         id="res-time"
+        aria-label="Choose time"
         value={time}
         onChange={(e) => setTime(e.target.value)}
         required
@@ -52,15 +58,16 @@ function BookingForm({ availableTimes, dispatch }) {
         min="1"
         max="10"
         id="guests"
+        aria-label="Number of guests"
         value={guests}
         onChange={(e) => setGuests(e.target.value)}
         required
       />
 
-      {/* Figma Animated / Custom Styled Occasion Dropdown */}
       <label htmlFor="occasion">Occasion</label>
       <select
         id="occasion"
+        aria-label="Occasion"
         className={`occasion-dropdown ${occasion ? 'selected' : ''}`}
         value={occasion}
         onChange={(e) => setOccasion(e.target.value)}
@@ -75,6 +82,7 @@ function BookingForm({ availableTimes, dispatch }) {
       <input
         type="submit"
         value="Make Your Reservation"
+        aria-label="On Click"
         className="btn-primary"
         style={{ marginTop: '10px', cursor: 'pointer' }}
       />
