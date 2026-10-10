@@ -1,93 +1,105 @@
 import React, { useState } from 'react';
 
-function BookingForm({ availableTimes, dispatch }) {
+export default function BookingForm({ availableTimes, dispatch, submitForm }) {
   const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
+  const [time, setTime] = useState(availableTimes[0] || '17:00');
   const [guests, setGuests] = useState(1);
-  const [occasion, setOccasion] = useState('');
+  const [occasion, setOccasion] = useState('Birthday');
 
   const handleDateChange = (e) => {
     const selectedDate = e.target.value;
     setDate(selectedDate);
-    if (dispatch) {
-      dispatch({ type: 'UPDATE_TIMES', date: selectedDate });
-    }
+    dispatch({ type: 'UPDATE_TIMES', date: selectedDate });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Reservation Confirmed!\nDate: ${date}\nTime: ${time}\nGuests: ${guests}\nOccasion: ${occasion || 'None'}`);
+    const formData = { date, time, guests, occasion };
+    if (submitForm) {
+      submitForm(formData);
+    }
   };
 
   return (
-    <form 
-      onSubmit={handleSubmit} 
-      className="booking-form"
-      style={{ display: 'grid', maxWidth: '400px', gap: '20px', margin: '30px auto' }}
-    >
-      <h2>Reserve a Table</h2>
+    <div style={{ maxWidth: '600px', margin: '40px auto', padding: '30px', backgroundColor: '#EDEFEE', borderRadius: '16px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
+      <h2 style={{ fontFamily: 'Markazi Text', fontSize: '2.5rem', color: '#495E57', textAlign: 'center', marginBottom: '20px' }}>
+        Reserve a Table
+      </h2>
+      <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '20px' }}>
+        <div>
+          <label htmlFor="res-date" style={{ display: 'block', fontWeight: 'bold', marginBottom: '8px', color: '#333' }}>
+            Choose date
+          </label>
+          <input
+            type="date"
+            id="res-date"
+            value={date}
+            onChange={handleDateChange}
+            required
+            style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
+          />
+        </div>
 
-      <label htmlFor="res-date">Choose date</label>
-      <input
-        type="date"
-        id="res-date"
-        aria-label="Choose date"
-        value={date}
-        onChange={handleDateChange}
-        required
-      />
+        <div>
+          <label htmlFor="res-time" style={{ display: 'block', fontWeight: 'bold', marginBottom: '8px', color: '#333' }}>
+            Choose time
+          </label>
+          <select
+            id="res-time"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+            required
+            style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
+          >
+            {availableTimes.map((availableTime, index) => (
+              <option key={index} value={availableTime}>
+                {availableTime}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      <label htmlFor="res-time">Choose time</label>
-      <select
-        id="res-time"
-        aria-label="Choose time"
-        value={time}
-        onChange={(e) => setTime(e.target.value)}
-        required
-      >
-        <option value="">Select a time</option>
-        {availableTimes && availableTimes.map((t) => (
-          <option key={t} value={t}>{t}</option>
-        ))}
-      </select>
+        <div>
+          <label htmlFor="guests" style={{ display: 'block', fontWeight: 'bold', marginBottom: '8px', color: '#333' }}>
+            Number of guests
+          </label>
+          <input
+            type="number"
+            placeholder="1"
+            min="1"
+            max="10"
+            id="guests"
+            value={guests}
+            onChange={(e) => setGuests(e.target.value)}
+            required
+            style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
+          />
+        </div>
 
-      <label htmlFor="guests">Number of guests</label>
-      <input
-        type="number"
-        placeholder="1"
-        min="1"
-        max="10"
-        id="guests"
-        aria-label="Number of guests"
-        value={guests}
-        onChange={(e) => setGuests(e.target.value)}
-        required
-      />
+        <div>
+          <label htmlFor="occasion" style={{ display: 'block', fontWeight: 'bold', marginBottom: '8px', color: '#333' }}>
+            Occasion
+          </label>
+          <select
+            id="occasion"
+            value={occasion}
+            onChange={(e) => setOccasion(e.target.value)}
+            style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
+          >
+            <option value="Birthday">Birthday</option>
+            <option value="Anniversary">Anniversary</option>
+          </select>
+        </div>
 
-      <label htmlFor="occasion">Occasion</label>
-      <select
-        id="occasion"
-        aria-label="Occasion"
-        className={`occasion-dropdown ${occasion ? 'selected' : ''}`}
-        value={occasion}
-        onChange={(e) => setOccasion(e.target.value)}
-        required
-      >
-        <option value="">Select Occasion</option>
-        <option value="Birthday">Birthday 🎂</option>
-        <option value="Engagement">Engagement 💍</option>
-        <option value="Anniversary">Anniversary 🎉</option>
-      </select>
-
-      <input
-        type="submit"
-        value="Make Your Reservation"
-        aria-label="On Click"
-        className="btn-primary"
-        style={{ marginTop: '10px', cursor: 'pointer' }}
-      />
-    </form>
+        <button
+          type="submit"
+          aria-label="On Click"
+          className="btn-primary"
+          style={{ width: '100%', padding: '12px', fontSize: '1rem', marginTop: '10px' }}
+        >
+          Make Your Reservation
+        </button>
+      </form>
+    </div>
   );
 }
-
-export default BookingForm;

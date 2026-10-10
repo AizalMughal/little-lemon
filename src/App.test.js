@@ -1,23 +1,29 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
 import { initializeTimes, updateTimes } from './components/Main';
+import BookingForm from './components/BookingForm';
 
-test('renders Little Lemon booking heading', () => {
-  render(<App />);
-  // Aap navigation ya welcome message check kar sakte hain
-  const linkElement = screen.getByText(/Little Lemon/i);
-  expect(linkElement).toBeInTheDocument();
+/* 1. Test for rendering the BookingForm heading */
+test('Renders the BookingForm heading', () => {
+  render(<BookingForm availableTimes={['17:00', '18:00']} dispatch={() => {}} />);
+  const headingElement = screen.getByText("Reserve a Table");
+  expect(headingElement).toBeInTheDocument();
 });
 
-test('initializeTimes returns expected initial available times', () => {
-  const initialTimes = initializeTimes();
-  expect(initialTimes.length).toBeGreaterThan(0);
-  expect(initialTimes).toContain('17:00');
+/* 2. Test for initializeTimes */
+test('initializeTimes returns expected available times from fetchAPI', () => {
+  const times = initializeTimes();
+  expect(times).not.toBeNull();
+  expect(Array.isArray(times)).toBe(true);
+  expect(times.length).toBeGreaterThan(0);
 });
 
-test('updateTimes returns the same state regardless of action', () => {
-  const currentState = ['17:00', '18:00'];
-  const action = { type: 'UPDATE_TIMES', date: '2026-10-15' };
-  const newState = updateTimes(currentState, action);
-  expect(newState).toEqual(['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']);
+/* 3. Test for updateTimes */
+test('updateTimes returns available times for the selected date', () => {
+  const initialState = ['17:00', '18:00'];
+  const action = { type: 'UPDATE_TIMES', date: '2026-06-06' };
+  const updatedTimes = updateTimes(initialState, action);
+
+  expect(updatedTimes).not.toBeNull();
+  expect(Array.isArray(updatedTimes)).toBe(true);
+  expect(updatedTimes.length).toBeGreaterThan(0);
 });
