@@ -1,4 +1,9 @@
 import React, { useReducer } from 'react';
+import restauranfood from '../icons_assets/restauranfood.jpg';
+import greekSalad from '../icons_assets/greek salad.jpg';
+import bruchetta from '../icons_assets/bruchetta.svg';
+import lemonDessert from '../icons_assets/lemon dessert.jpg';
+import deliveryIcon from '../icons_assets/Dish icon.svg';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import BookingPage from './BookingPage';
 
@@ -18,96 +23,96 @@ function HomePage() {
 
   return (
     <>
-      {/* 1. Hero Section */}
+      {/* Hero Section */}
       <section className="hero-section">
-        <div className="hero-content">
-          <h1>Little Lemon</h1>
-          <h2>Chicago</h2>
-          <p>
-            We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.
-          </p>
-          <button onClick={() => navigate('/booking')} className="btn-primary">
-            Reserve a Table
-          </button>
-        </div>
-        <div className="hero-image">
-          <div className="img-placeholder">Restaurant Food Image</div>
+        <div className="hero-container">
+          <div className="hero-content">
+            <h1>Little Lemon</h1>
+            <h2>Chicago</h2>
+            <p>
+              We are a family owned Mediterranean restaurant, focused on traditional
+              recipes served with a modern twist.
+            </p>
+            <button onClick={() => navigate('/booking')} className="btn-primary">
+              Reserve a Table
+            </button>
+          </div>
+          <div className="hero-image-wrapper">
+            <img src={restauranfood} alt="Restaurant Food" />
+          </div>
         </div>
       </section>
 
-      {/* 2. Highlights Section */}
+      {/* Highlights Section */}
       <section className="highlights-section">
         <div className="highlights-header">
           <h2>This weeks specials!</h2>
           <button className="btn-primary">Online Menu</button>
         </div>
         <div className="cards-grid">
+          {/* Card 1 */}
           <div className="card">
-            <div className="card-img">Greek Salad Image</div>
+            <div className="card-img">
+              <img src={greekSalad} alt="Greek Salad" />
+            </div>
             <div className="card-content">
               <div className="card-title">
                 <h3>Greek salad</h3>
                 <span className="price">$12.99</span>
               </div>
-              <p>The famous greek salad of crispy romaine lettuce, onions, olives and feta cheese.</p>
+              <p>
+                The famous greek salad of crispy lettuce, peppers, olives and our
+                Chicago style feta cheese, garnished with crunchy garlic and rosemary
+                croutons.
+              </p>
+              <div className="card-delivery">
+                <span>Order a delivery</span>
+                <img src={deliveryIcon} alt="Delivery" />
+              </div>
             </div>
           </div>
+
+          {/* Card 2 */}
           <div className="card">
-            <div className="card-img">Bruchetta Image</div>
+            <div className="card-img">
+              <img src={bruchetta} alt="Bruschetta" />
+            </div>
             <div className="card-content">
               <div className="card-title">
-                <h3>Bruchetta</h3>
+                <h3>Bruschetta</h3>
                 <span className="price">$5.99</span>
               </div>
-              <p>Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned.</p>
+              <p>
+                Our Bruschetta is made from grilled bread that has been smeared with garlic
+                and seasoned with salt and olive oil.
+              </p>
+              <div className="card-delivery">
+                <span>Order a delivery</span>
+                <img src={deliveryIcon} alt="Delivery" />
+              </div>
             </div>
           </div>
+
+          {/* Card 3 */}
           <div className="card">
-            <div className="card-img">Lemon Dessert Image</div>
+            <div className="card-img">
+              <img src={lemonDessert} alt="Lemon Dessert" />
+            </div>
             <div className="card-content">
               <div className="card-title">
                 <h3>Lemon Dessert</h3>
                 <span className="price">$5.00</span>
               </div>
-              <p>This comes straight from grandma's recipe book, every last ingredient has been sourced.</p>
+              <p>
+                This comes straight from grandma's recipe book, every last ingredient
+                has been sourced and is as authentic as can be imagined.
+              </p>
+              <div className="card-delivery">
+                <span>Order a delivery</span>
+                <img src={deliveryIcon} alt="Delivery" />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* 3. Testimonials Section */}
-      <section className="testimonials-section">
-        <h2>Testimonials</h2>
-        <div className="reviews-grid">
-          <div className="review-card">
-            <h4>Rating: ★★★★★</h4>
-            <p><strong>Sara K.</strong></p>
-            <p>"Awesome food and great ambiance!"</p>
-          </div>
-          <div className="review-card">
-            <h4>Rating: ★★★★★</h4>
-            <p><strong>John D.</strong></p>
-            <p>"Best Mediterranean food in town!"</p>
-          </div>
-          <div className="review-card">
-            <h4>Rating: ★★★★★</h4>
-            <p><strong>Aizal M.</strong></p>
-            <p>"Loved the table reservation experience."</p>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. About Section */}
-      <section className="about-section">
-        <div className="about-content">
-          <h1>Little Lemon</h1>
-          <h2>Chicago</h2>
-          <p>
-            Little Lemon is owned by two Italian brothers, Mario and Adrian, who moved to the United States to start their dream restaurant.
-          </p>
-        </div>
-        <div className="about-images">
-          <div className="img-placeholder">Mario and Adrian</div>
         </div>
       </section>
     </>
